@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Street Food Recipes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="#" class="logo">Street Food Recipes</a>
+      <ul class="nav-links">
+        <li><a href="#browse">Browse Recipes</a></li>
+        <li><a href="#search">Search</a></li>
+        <li><a href="#favorites">Favorites</a></li>
+      </ul>
+    </nav>
+
+    <!-- Recipe Browsing Section -->
+    <section id="browse" class="recipe-browsing">
+      <h2>Browse Recipes by Category</h2>
+      <div class="categories">
+        <button class="category-btn" onclick="filterRecipes('Asian')">Asian</button>
+        <button class="category-btn" onclick="filterRecipes('European')">European</button>
+        <button class="category-btn" onclick="filterRecipes('American')">American</button>
+        <button class="category-btn" onclick="filterRecipes('Vegetarian')">Vegetarian</button>
+      </div>
+      <div class="recipe-grid" id="recipe-grid">
+        <div class="recipe-card">
+          <img src="images/image-1.jpeg" alt="Asian Recipe">
+          <h3>Pad Thai</h3>
+          <button onclick="viewRecipe('images/image-1.jpeg')">View Recipe</button>
+          <button onclick="addFavorite('images/image-1.jpeg')">Add to Favorites</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/image-02.jpeg" alt="European Recipe">
+          <h3>Italian Pizza</h3>
+          <button onclick="viewRecipe('images/image-02.jpeg')">View Recipe</button>
+          <button onclick="addFavorite('images/image-02.jpeg')">Add to Favorites</button>
+        </div>
+        <!-- Add more recipe cards here -->
+      </div>
+    </section>
+
+    <!-- Recipe Search Section -->
+    <section id="search" class="recipe-search">
+      <h2>Search Recipes</h2>
+      <input type="text" id="search-bar" placeholder="Search by ingredient, cuisine, or diet...">
+      <button onclick="searchRecipe()">Search</button>
+      <div id="search-results" class="search-results">
+        <!-- Search results will be displayed here -->
+      </div>
+    </section>
+
+    <!-- Recipe Details Section -->
+    <section id="recipe-details" class="recipe-details">
+      <h2>Recipe Details</h2>
+      <div id="recipe-container" class="recipe-container">
+        <!-- Detailed recipe information will be displayed here -->
+      </div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section id="favorites" class="recipe-favorites">
+      <h2>Your Favorite Recipes</h2>
+      <div id="favorites-list" class="favorites-list">
+        <!-- Favorite recipes will be listed here -->
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function filterRecipes(category) {
+      // Logic to filter recipes by category
+      alert(`Showing ${category} recipes`);
+    }
+
+    function viewRecipe(recipeId) {
+      const recipeContainer = document.getElementById('recipe-container');
+      recipeContainer.innerHTML = `<h3>${recipeId} Recipe</h3><p>Details and cooking steps for ${recipeId}...</p>`;
+    }
+
+    function addFavorite(recipeName) {
+      const favoritesList = document.getElementById('favorites-list');
+      const favoriteElement = `<div class="favorite-card"><h4>${recipeName}</h4><button onclick="viewRecipe('${recipeName}')">View Recipe</button></div>`;
+      favoritesList.innerHTML += favoriteElement;
+    }
+
+    function searchRecipe() {
+      const searchQuery = document.getElementById('search-bar').value;
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = `<p>Results for: ${searchQuery}</p>`;
+    }
+  </script>
+</body>
+</html>
